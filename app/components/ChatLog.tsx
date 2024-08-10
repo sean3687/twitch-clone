@@ -9,19 +9,18 @@ const ChatLog = forwardRef<HTMLDivElement, ChatLogProps>(({ messages }, ref) => 
   const [isAtBottom, setIsAtBottom] = useState(true);
 
   const onScroll = () => {
-    const current = ref.current;
+    const current = (ref as React.MutableRefObject<HTMLDivElement | null>).current;
     if (!current) return;
-
+  
     const isScrolledToBottom = current.scrollHeight - current.clientHeight <= current.scrollTop + 1;
     setIsAtBottom(isScrolledToBottom);
   };
-
   useEffect(() => {
-    const current = ref.current;
+    const current = (ref as React.MutableRefObject<HTMLDivElement | null>).current;
     if (isAtBottom && current) {
       current.scrollTop = current.scrollHeight - current.clientHeight;
     }
-  }, [messages]); // Dependency on messages means this effect runs every time the message list updates
+  }, [messages]); 
 
   const renderMessage = (message: string, username: string): JSX.Element[] => {
     const parts = message.split(/(\/emotes\/\w+\.webp|\/\w+)/g);

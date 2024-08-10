@@ -9,12 +9,15 @@ import {
   Message,
 } from "../mockdata";
 
+
 interface ChatProps {
+  onInputChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   textareaRef: React.RefObject<HTMLTextAreaElement>;
   onSendMessage: (message: Message) => void;
 }
 
-export default function Chat({ textareaRef, onSendMessage }: ChatProps) {
+
+export default function Chat({ onInputChange, textareaRef, onSendMessage }: ChatProps) {
   const [inputValue, setInputValue] = useState<string>("");
   const [suggestions, setSuggestions] = useState<(User | Command | Emote)[]>(
     []

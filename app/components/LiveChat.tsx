@@ -5,17 +5,17 @@ import Chat from "./Chat";
 import { Message, messages } from "../mockdata";
 
 export default function LiveChat() {
-  const [chatBoxHeight, setChatBoxHeight] = useState(48); // Initial height (3 lines)
+  const [chatBoxHeight, setChatBoxHeight] = useState(48);
   const [mockMessages, setMockMessages] = useState<Message[]>(messages);
   const [bottomStatus, setBottomStatus] = useState(true);
   const chatBoxRef = useRef<HTMLTextAreaElement>(null);
-  const chatLogRef = useRef<HTMLDivElement>(null); // Ref for ChatLog div
+  const chatLogRef = useRef<HTMLDivElement>(null);
 
   // Handle the textarea resize
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const textareaLineHeight = 16; // Assuming 16px line height
-    const minHeight = 48; // 3 lines of text
-    const maxHeight = 96; // 6 lines of text
+    const textareaLineHeight = 16; 
+    const minHeight = 48; 
+    const maxHeight = 96; 
 
     if (chatBoxRef.current) {
       chatBoxRef.current.style.height = "auto";
