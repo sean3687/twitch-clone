@@ -4,7 +4,7 @@ export default function Broadcast() {
       <iframe
         className="flex justify-center items-center w-full h-screen"
         src={
-          "https://player.twitch.tv/?video=2219331662&parent=localhost"
+          `https://player.twitch.tv/?video=2219331662&parent=${process.env.NEXT_PUBLIC_HOST}`
         }
       ></iframe>
     </div>
